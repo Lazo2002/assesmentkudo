@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          padding: 5px;
+        }
+        th {
+          background-color: lightgray;
+        }
+      </style>
+</head>
+<body>
+    <h1>Users</h1>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Resume</th>
+      </tr>
+      <% data.forEach(function(user) { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phoneno %></td>
+          <td>
+            <form action="/download" method="POST">
+                <input type="hidden" name="resumePath" value="<%= user.resume %>">
+                <button type="submit" class="btn btn-primary">Download</button>
+              </form>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
+    </body>
+</html>
+
+
